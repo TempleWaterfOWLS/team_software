@@ -149,11 +149,7 @@ main( int /* argc */, char** /* argv */ )
     {
 		return EXIT_FAILURE;
     }
-   // carry out rectification from triclops color input
-    if ( doRectification( triclops, triclopsColorInput, rectifiedPackedColorImage ) )
-    {
-		return EXIT_FAILURE;
-    }
+
     // output image disparity image with subpixel interpolation
     TriclopsImage16 disparityImage16;
 
@@ -169,7 +165,11 @@ main( int /* argc */, char** /* argv */ )
 		return EXIT_FAILURE;
     }
 
-
+   // carry out rectification from triclops color input
+    if ( doRectification( triclops, triclopsColorInput, rectifiedPackedColorImage ) )
+    {
+		return EXIT_FAILURE;
+    }
 
     // Close the camera and disconnect
     camera.StopCapture();
@@ -280,9 +280,8 @@ int generateTriclopsInput( FC2::Image const & grabbedImage,
 
     FC2::PGMOption pgmOpt;
     pgmOpt.binaryFile = true;
-    //commenting out the saving of raw images
-    //unprocessedImage[RIGHT].Save("rawRightImage.pgm", &pgmOpt);
-    //unprocessedImage[LEFT].Save("rawLeftImage.pgm", &pgmOpt);
+    unprocessedImage[RIGHT].Save("rawRightImage.pgm", &pgmOpt);
+    unprocessedImage[LEFT].Save("rawLeftImage.pgm", &pgmOpt);
 
     FC2::Image * monoImage = imageContainer.mono;
 
@@ -302,9 +301,8 @@ int generateTriclopsInput( FC2::Image const & grabbedImage,
         FC2::PNGOption pngOpt;
         pngOpt.interlaced = false;
         pngOpt.compressionLevel = 9;
-	//commenting out the saving of the color images
-	// bgruImage[RIGHT].Save("colorImageRight.png", &pngOpt);
-	//        bgruImage[LEFT].Save("colorImageLeft.png", &pngOpt);
+        bgruImage[RIGHT].Save("colorImageRight.png", &pngOpt);
+        bgruImage[LEFT].Save("colorImageLeft.png", &pngOpt);
 
         FC2::Image & packedColorImage = imageContainer.packed;
 
@@ -340,8 +338,7 @@ int generateTriclopsInput( FC2::Image const & grabbedImage,
                                         packedColorImage.GetPixelFormat(),
                                         FC2::NONE);
 
-	//commenting out the packed image
-	//packedColorImage.Save("packedColorImage.png",&pngOpt );
+        packedColorImage.Save("packedColorImage.png",&pngOpt );
 
         for ( int i = 0; i < 2; ++i )
         {
@@ -352,9 +349,8 @@ int generateTriclopsInput( FC2::Image const & grabbedImage,
             }
         }
 
-	//No need to save the mono images, they are unused
-	// monoImage[RIGHT].Save("monoImageRight.pgm", &pgmOpt);
-        //monoImage[LEFT].Save("monoImageLeft.pgm", &pgmOpt);
+        monoImage[RIGHT].Save("monoImageRight.pgm", &pgmOpt);
+        monoImage[LEFT].Save("monoImageLeft.pgm", &pgmOpt);
     }
     else
     {
