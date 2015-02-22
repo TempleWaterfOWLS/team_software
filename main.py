@@ -14,29 +14,32 @@ Usage: Not yet determined
 from subprocess import call
 from sys import argv
 
-
-
 # To do: fix handlers, make input better defined
 def main():
     ''' 
     Parse command line args and determine state
     ''' 
-    try: 
+    # Default parameters
+    stdin_args = ''
+    cpp_file = "triclops/src/examples/common/stereoto3dpoints/stereoto3dpoints"
+    reconstruct_file = "./triclops/src/examples/common/stereoto3dpoints/reconstruction.py"
+    # Parse for inputs
+    if len(argv) == 2:
+        cpp_file = argv[1]
+    elif len(argv) == 3:
         cpp_file = argv[1]
         stdin_args = argv[2].split()
-    # Handle no args
-    except:
-        cpp_file = None
-        stdin_args = None
-    # Call Cpp file
-    if cpp_file != None:
+    # Try to call C++ file
+    try: 
         cpp_file = "./" + cpp_file
         cpp_file = [cpp_file]
         call(cpp_file + stdin_args)
+        call([reconstruct_file])
+    # Handle exception
+    except:
+        cpp_file = None
+        stdin_args = None
 
-    else:
-        print "No Cpp file"
-    print "Things are happening out of order"
 
 # Boiler plate code
 if __name__ == '__main__':
