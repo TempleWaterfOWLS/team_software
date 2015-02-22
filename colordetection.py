@@ -79,7 +79,7 @@ def color_detect(argv):
 	#closing = cv2.morphologyEx(bluemask,cv2.MORPH_CLOSE,closekernel)
 	opening = cv2.morphologyEx(blue_mask,cv2.MORPH_OPEN,open_kernel)	
 
-	res = cv2.bitwise_and(img,img,mask = blue_mask)
+	res = cv2.bitwise_and(img,img,mask = yelow_mask)
 	res2 = cv2.bitwise_and(img,img,mask = opening)
 
 	#Display Pictures
