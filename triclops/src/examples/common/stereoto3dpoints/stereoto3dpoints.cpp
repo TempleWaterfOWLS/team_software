@@ -25,6 +25,15 @@
 // This point file can be viewed with PGRView under windows.
 //
 //=============================================================================
+//Date:2/9/2015
+//Change: Added a section for potential optimization solutions for the pixel, 
+//        distance association; instead of reading the information from the file, 
+//        check every pixel-distance point as it is being made for proximity      
+// Comment Title: Potential Optimization Solution #1    
+// Solution Location: save3dPoints
+
+
+
 
 #include "triclops.h"
 
@@ -32,7 +41,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
+#define DIST_THRESHOLD = 10; // arbitrary number, will be used in the future for navigation decision making
+                             // i.e. if object is within x ft, locate and perform obstacle avoidance
 
 //
 // Macro to check, report on, and handle Triclops API error codes.
@@ -492,6 +502,20 @@ int save3dPoints( FC2::Image      const & grabbedImage,
 	      // triclopsRCD16ToXYZ( triclops, i, j, disparity, &x, &y, &z );
 	      triclopsRCD16ToWorldXYZ(triclops, i, j, disparity, &x, &y, &z );
                 // look at points within a range
+
+	      /*//Potential Optimization Solution #1
+	      //Correlate pixel to the corresponding distance
+	      if(z < DIST_THRESHOLD)
+		{
+		  // find cluster of pixels associated with the distance
+		  // store the pixel locations
+		  // check for pixel adjacencies
+		  // isolate object in image via drawing a rectangle
+
+
+		  
+		  }*/
+
                 if ( z < 5.0 )
                 {
                     if ( isColor )
@@ -537,7 +561,7 @@ int doRectification( const TriclopsContext & triclops,
     _HANDLE_TRICLOPS_ERROR( "triclopsRectifyPackedColorImage()", te );
    
     // Save the color rectified image to file
-    const char * rectifiedFilename = "right-rectified.pgm";
+    const char * rectifiedFilename = "rectified.pgm";
     triclopsSavePackedColorImage(&rectifiedPackedColorImage, const_cast<char *>(rectifiedFilename) );
 
     return 0;

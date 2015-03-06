@@ -1,4 +1,4 @@
-1"""
+"""
 USAGE: python colordetection.py ~/file/path/to/jpg/file.jpg
 
 This function should recieve an input picture filepath, and then return whether or not a specific color was detected in a significant fashion. Colors to be detected for every task: 
