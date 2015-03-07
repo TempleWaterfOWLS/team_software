@@ -4,10 +4,10 @@
  Looks for motor power and motor node number from ROS 
  Outputs the motor response information to ROS
 '''
-from motor_comm import *
+
 import rospy
-from beagleboneblack.msg import MotorPower
-from beagleboneblack.msg import MotorResponse
+from team_software.msg import MotorPower
+from team_software.msg import RandTheta
 
 
 def power_level(data,motors):
