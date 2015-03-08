@@ -27,11 +27,14 @@ import cv2
 import numpy as np
 
 def color_detect(argv):
+	'''
+	# Debug Info
 	print 'Number of arguments:', len(argv), 'arguments.'
 	print 'Argument List:', str(argv)
 	# Grab picture filepath, convert to string:
+	'''
 	filepath = str(argv[0])
-	print filepath
+	#print filepath
 	# Define HSV bounds for Black, Blue, Green, Red, White, Yellow, Random obstacles:
 	lower_black  = np.array([0,0,20]);    upper_black  = np.array([180,35,53])
 	lower_blue   = np.array([100,45,40]); upper_blue   = np.array([161,114,130])
@@ -40,7 +43,8 @@ def color_detect(argv):
 	lower_yellow = np.array([18,50,133]); upper_yellow = np.array([28,120,255])
 
         #Less strict BBall: [0 97 51], [179 152 149]
-	lower_bball = np.array([0,84,51]); upper_bball = np.array([179,128,87])
+	#lower_bball = np.array([0,84,51]); upper_bball = np.array([179,128,87])
+	lower_bball = np.array([2,111,0]); upper_bball = np.array([7,179,219])
         #Strict Soccer Ball: [0 0 24] [179 100 41]
 	lower_sball = np.array([0,0,24]); upper_sball = np.array([179,100,41])        
 
@@ -80,25 +84,20 @@ def color_detect(argv):
 	cv2.namedWindow('bballmask', cv2.WINDOW_NORMAL)
 	cv2.imshow('bballmask',res)
 	cv2.namedWindow('bballopen', cv2.WINDOW_NORMAL)
-	cv2.imshow('Opening',res4)
+	cv2.imshow('bballopen',res4)
 	cv2.namedWindow('sballmask',cv2.WINDOW_NORMAL)
 	cv2.imshow('sballmask',res2)
 	cv2.namedWindow('sballopen',cv2.WINDOW_NORMAL)
 	cv2.imshow('sballopen',res3)
 	cv2.waitKey(0)
 	cv2.destroyAllWindows()
-	return blue_mask,opening
 
 def main(argv):
-	res1,res2 = color_detect(argv)
-	cv2.namedWindow('test', cv2.WINDOW_NORMAL)
-	cv2.imshow('test',res1)
-	cv2.namedWindow('test2', cv2.WINDOW_NORMAL)
-	cv2.imshow('test2',res2)
-	cv2.waitKey(0)
-	cv2.destroyAllWindows()
+	# Call color detect
+	color_detect(argv)
 
 if __name__ == "__main__":
+	# Pass in system inputs
 	main(sys.argv[1:])
 
 

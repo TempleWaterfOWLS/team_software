@@ -14,12 +14,11 @@ cv2.createTrackbar('Vlow','image',0,255,nothing)
 cv2.createTrackbar('Hhigh','image',0,179,nothing)
 cv2.createTrackbar('Shigh','image',0,255,nothing)
 cv2.createTrackbar('Vhigh','image',0,255,nothing)
-
+frame = cv2.imread('rectified.pgm')
 while(1):
     k = cv2.waitKey(1) & 0xFF
     if k == 27:
         break
-    ret, frame = cap.read()
 
     # get current positions of four trackbars
     hlow = cv2.getTrackbarPos('Hlow','image')
