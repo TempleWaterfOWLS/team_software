@@ -1,4 +1,7 @@
 *.pts
 *.pgm
 *.png
+*.pyc
 *~
+#*
+*.Png

@@ -3,6 +3,7 @@ import numpy as np
 
 def nothing(x):
     pass
+
 cap = cv2.VideoCapture(0)
 cv2.namedWindow('image',cv2.CV_WINDOW_AUTOSIZE)
 
@@ -14,12 +15,14 @@ cv2.createTrackbar('Vlow','image',0,255,nothing)
 cv2.createTrackbar('Hhigh','image',0,179,nothing)
 cv2.createTrackbar('Shigh','image',0,255,nothing)
 cv2.createTrackbar('Vhigh','image',0,255,nothing)
+frame = cv2.imread('rectified.pgm')
+frame = cv2.bilateralFilter(frame,11,100,100)
+# 0 0 0, 44 73 63
 
 while(1):
     k = cv2.waitKey(1) & 0xFF
     if k == 27:
         break
-    ret, frame = cap.read()
 
     # get current positions of four trackbars
     hlow = cv2.getTrackbarPos('Hlow','image')
