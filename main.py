@@ -44,28 +44,28 @@ def main():
   stdin_args = ''
 	# temporary removal of call to cpp file until BB is fixed
 	#cpp_file = "./triclops/src/examples/common/stereoto3dpoints/stereoto3dpoints"
-	cpp_file = "./test.py"
-	reconstruct_file = "./triclops/src/examples/common/stereoto3dpoints/reconstruction.py"
-	rectified_file = 'rectified.jpg'
+  cpp_file = "./test.py"
+  reconstruct_file = "./triclops/src/examples/common/stereoto3dpoints/reconstruction.py"
+  rectified_file = 'rectified.jpg'
 	# Parse for inputs
-	if len(argv) == 2:
-		cpp_file = argv[1]
-	elif len(argv) == 3:
-		cpp_file = argv[1]
-		stdin_args = argv[2]
-		# Try to call C++ file
-		cpp_file = "./" + cpp_file
-		cpp_file = [cpp_file]
-	while not rospy.is_shutdown():
-		try:
-			args = [cpp_file,reconstruct_file,rectified_file,stdin_args]
-			payload.theta = detection_loop(args)  
-		except:
-			print 'Except block, default'
-			payload.theta = 90.0
+  if len(argv) == 2:
+	cpp_file = argv[1]
+  elif len(argv) == 3:
+	cpp_file = argv[1]
+	stdin_args = argv[2]
+	# Try to call C++ file
+	cpp_file = "./" + cpp_file
+	cpp_file = [cpp_file]
+  while not rospy.is_shutdown():
+	try:
+		args = [cpp_file,reconstruct_file,rectified_file,stdin_args]
+		payload.theta = detection_loop(args)  
+	except:
+		print 'Except block, default'
+		payload.theta = 90.0
   # Publish this shit yo
-	pub.publish(payload)
-	rate.sleep()
+  pub.publish(payload)
+  rate.sleep()
   
   # Boiler plate code
 if __name__ == '__main__':
