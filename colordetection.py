@@ -127,16 +127,14 @@ def color_detect(argv):
 	# Else go right (return positive)
 
 	if right_side > left_side:
-		print "90"
-		return 90
+		print "-90"
+		return -90.0
 	elif right_side == 0 and left_side == 0:
 		print "0"
-		return 0
+		return 0.0
 	else:
 		print "-90"
 		return -90	
-
-
 	'''
 	# Circle code
 	src = cv2.imread("yoloswag420.png")
