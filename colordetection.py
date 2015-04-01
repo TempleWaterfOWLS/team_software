@@ -40,7 +40,7 @@ def color_detect(argv):
 	lower_blue   = np.array([100,45,40]); upper_blue   = np.array([161,114,130])
 	lower_green  = np.array([41,133,73]);  upper_green  = np.array([57,255,167])
 	lower_red    = np.array([174,50,50]); upper_red    = np.array([180,255,255])        
-	lower_yellow = np.array([16,71,117]); upper_yellow = np.array([38,189,189])
+	lower_yellow = np.array([27,106,145]); upper_yellow = np.array([33,192,196])
 
 	# BB2: lower_bball = np.array([2,111,0]); upper_bball = np.array([7,179,219])
 	lower_bball = np.array([0,216,9]); upper_bball = np.array([10,255,134])	        
@@ -69,14 +69,14 @@ def color_detect(argv):
 	purple_mask = cv2.inRange(hsvimg,lower_purple,upper_purple)
 
 	#Apply different morphological filters to get appropriate shape and remove noise (Needs testing):
-	close_kernel = cv2.getStructuringElement(cv2.MORPH_RECT,(10,10))	
-	open_kernel  = cv2.getStructuringElement(cv2.MORPH_RECT,(3,3))	
+	close_kernel = cv2.getStructuringElement(cv2.MORPH_RECT,(5,5))	
+	open_kernel  = cv2.getStructuringElement(cv2.MORPH_RECT,(5,5))	
 	#closing = cv2.morphologyEx(bluemask,cv2.MORPH_CLOSE,closekernel)
 	sball_opening = cv2.morphologyEx(sball_mask,cv2.MORPH_OPEN,open_kernel)	
 	bball_opening = cv2.morphologyEx(bball_mask,cv2.MORPH_OPEN,open_kernel)	
-	purple_opening = cv2.morphologyEx(purple_mask,cv2.MORPH_OPEN,open_kernel)
-	green_opening =  cv2.morphologyEx(green_mask,cv2.MORPH_OPEN,open_kernel)
-	yellow_opening = cv2.morphologyEx(yellow_mask,cv2.MORPH_OPEN,open_kernel)
+	purple_opening = cv2.morphologyEx(purple_mask,cv2.MORPH_OPEN,open_kernel); purple_opening = cv2.morphologyEx(purple_opening,cv2.MORPH_CLOSE,close_kernel);
+	green_opening =  cv2.morphologyEx(green_mask,cv2.MORPH_OPEN,open_kernel); green_opening = cv2.morphologyEx(green_opening, cv2.MORPH_CLOSE,close_kernel);
+	yellow_opening = cv2.morphologyEx(yellow_mask,cv2.MORPH_OPEN,open_kernel); yellow_opening = cv2.morphologyEx(yellow_opening, cv2.MORPH_CLOSE, close_kernel);
 	# Res pictures
 	res = cv2.bitwise_and(img,img,mask = bball_mask)
 	res2 = cv2.bitwise_and(img,img,mask = sball_mask)
@@ -125,7 +125,7 @@ def color_detect(argv):
 	# Lazy output logic: 
 	# If right > left, go left (return negative)
 	# Else go right (return positive)
-
+	'''
 	if right_side > left_side:
 		print "-90"
 		return -90.0
@@ -135,6 +135,7 @@ def color_detect(argv):
 	else:
 		print "-90"
 		return -90	
+	'''
 	'''
 	# Circle code
 	src = cv2.imread("yoloswag420.png")
