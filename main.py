@@ -29,8 +29,8 @@ def detection_loop(args):
 	cpp_file = args[0]; reconstruct_file = args[1]; rectified_file = args[2];
 	print cpp_file
 	call(cpp_file)
-	print reconstruct_file
-   	call([reconstruct_file])
+	#print reconstruct_file
+	#call([reconstruct_file])
 	angle_out = cd.color_detect(['rectified.jpg'])
 	return angle_out
 
@@ -42,8 +42,8 @@ def main():
   rate = rospy.Rate(10)
   # Not ROS publisher stuff
   stdin_args = ''
-	# temporary removal of call to cpp file until BB is fixed
-	#cpp_file = "./triclops/src/examples/common/stereoto3dpoints/stereoto3dpoints"
+  # temporary removal of call to cpp file until BB is fixed
+  #cpp_file = "./triclops/src/examples/common/stereoto3dpoints/stereoto3dpoints"
   cpp_file = "./test.py"
   reconstruct_file = "./triclops/src/examples/common/stereoto3dpoints/reconstruction.py"
   rectified_file = 'rectified.jpg'
@@ -63,9 +63,9 @@ def main():
 	except:
 		print 'Except block, default'
 		payload.theta = 90.0
-  # Publish this shit yo
-  pub.publish(payload)
-  rate.sleep()
+	# Publish this shit yo
+	pub.publish(payload)
+	rate.sleep()
   
   # Boiler plate code
 if __name__ == '__main__':
