@@ -34,37 +34,43 @@ def form():
 #6.2 HEARTBEAT RESPONSE
 @app.route('/heartbeat/<course>/<teamCode>', methods=['GET','POST'])
 def heartbeat(course, teamCode):
-    response = make_response(render_template('heartbeat_response.html', status = '200'))
-    response.headers['HEADER'] = 'HEADER'
+    response = jsonify(success = True)
+    # make_response(render_template('heartbeat_response.html', status = '200'))
+    # response.headers['HEADER'] = 'HEADER'
     return response 
 
 #5.5 UAV
 @app.route('/interop/report/<course>/<teamCode>', methods=['GET','POST'])
 def uav(course, teamCode):
-    response = make_response(render_template('uav_response.html', status = '200'))
-    response.headers['HEADER'] = 'HEADER'
+    response = jsonify(success = True)
+    # make_response(render_template('uav_response.html', status = '200'))
+    # response.headers['HEADER'] = 'HEADER'
     return response 
 
 #5.4 PINGER
 @app.route('/pinger/<course>/<teamCode>', methods=['GET','POST'])
 def pinger(course, teamCode):
-    response = make_response(render_template('pinger_response.html', status = '200'))
-    response.headers['HEADER'] = 'HEADER'
+    response = jsonify(success = True)
+    # make_response(render_template('pinger_response.html', status = '200'))
+    # response.headers['HEADER'] = 'HEADER'
     return response 
 
 #5.3 AUTOMATED DOCKING
-@app.route('/automated Docking/<course>/<teamCode>', methods=['GET','POST'])
-def uav(course, teamCode):
-    response = make_response(render_template('docking_response.html', status = '200'))
-    response.headers['HEADER'] = 'HEADER'
+@app.route('/automatedDocking/<course>/<teamCode>', methods=['GET','POST'])
+def docking(course, teamCode):
+    
+    response = jsonify(success = True, dockingBaySequence = True )
+    # make_response(render_template('docking_response.html', status = '200'))
+    # response.headers['HEADER'] = 'HEADER'
     return response 
 
 
-#5.2 Obstacle Avoidance
+#5.2 OBSTACLE AVOIDANCE
 @app.route('/obstacleAvoidance/<course>/<teamCode>', methods=['GET','POST'])
-def uav(course, teamCode):
-    response = make_response(render_template('obstacle_response.html', status = '200'))
-    response.headers['HEADER'] = 'HEADER'
+def obstacle(course, teamCode):
+    response = jsonify(success = True, gateCode = {'1','Z'})
+    # make_response(render_template('obstacle_response.html', status = '200'))
+    # response.headers['HEADER'] = 'HEADER'
     return response 
 
 
