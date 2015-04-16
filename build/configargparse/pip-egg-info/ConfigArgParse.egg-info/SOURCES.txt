@@ -1,0 +1,9 @@
+LICENSE
+MANIFEST.in
+README.rst
+configargparse.py
+setup.cfg
+pip-egg-info/ConfigArgParse.egg-info/PKG-INFO
+pip-egg-info/ConfigArgParse.egg-info/SOURCES.txt
+pip-egg-info/ConfigArgParse.egg-info/dependency_links.txt
+pip-egg-info/ConfigArgParse.egg-info/top_level.txt

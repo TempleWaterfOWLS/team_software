@@ -1,0 +1,3 @@
+#!/usr/bin/python
+from libmproxy.main import mitmproxy
+mitmproxy()
