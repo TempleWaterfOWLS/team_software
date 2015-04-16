@@ -33,8 +33,8 @@ def docking(course, teamCode):
 #5.2 OBSTACLE AVOIDANCE
 @app.route('/obstacleAvoidance/<course>/<teamCode>', methods=['GET','POST'])
 def obstacle(course, teamCode):
-    response = jsonify(success = True, gateCode = {'1','Z'})
+    response = jsonify(success = True, gateCode = ['1','Z'])
     return response 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0',port=3333,debug=True)
