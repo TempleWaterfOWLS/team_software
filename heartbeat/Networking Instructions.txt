@@ -1,0 +1,53 @@
+1) Setting up Wifi for Boat---> Onshore
+Based on Router Addressing
+Network: 192.168.0.0
+We should make this network's addresses static but
+we use DHCP, so the addresses below may not be the same,
+after connecting the devices to wifi, ipconfig/ifconfig and change accordingly
+
+
+Dynamically Assigned
+
+Boat 
+IP: 192.168.0.101
+Mask: 255.255.0.0
+
+Shore
+IP: 192.168.0.100
+Mask: 255.255.0.0
+
+
+2) Setting up LAN for Onshore--->Comp Srv
+Based on LAN Address:192.168.2.0
+
+
+Statically Assigned
+
+Shore
+IP: 192.168.2.105
+Mask: 255.255.0.0
+
+Comp Srv 
+IP: 192.168.2.103
+Mask: 255.255.0.0
+
+
+=====================================================================================
+
+Running the servers:
+
+On the Psuedo server, run python psuedo_server.py in directory /team_software/heartbeat/test_srv
+
+On the shore server, run python proxy_server.py in the directory ~/repos/team_software/heartbeat
+Also, run PROXYHOST="IP.ON.ETH.AKA.PSUEDO.SERV.IP" mitmproxy -p port_num -R http://127.0.0.1:6666 -s revProxy.py
+
+On the Boat, run python gather_data.py, and maybe specify what requests/data you want to send
+
+Need to:
+-Rosify Code
+-Install Mitm shore computer
+ 
+
+Computers:
+Boat computer -> Boat laptop
+Shore computer -> Joe's Mac
