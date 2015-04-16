@@ -20,8 +20,8 @@ def request(ctx,r):
     else:
         # Send shit to other proxy server
 	# example host = 'google.com'
-        r.request.headers['Host'] = ['google.com']
+        r.request.headers['Host'] = [proxyHost]
         r.request.scheme = 'http'
-        r.request.host = 'google.com'
-        r.request.port = 80
+        r.request.host = proxyHost
+        r.request.port = 5000
         

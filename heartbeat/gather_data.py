@@ -52,8 +52,14 @@ def send_beat(url):
 # Call main boiler plate
 if __name__ == '__main__':
 	# Declare serverIP, port, and desired index to create URL
-	serverIP = "192.168.0.103"; port="80"; directory = "/heartbeat/";
-	course = "/courseA/"; team_code = "/TUWF";
-	directory += course + team_code
-	url="http://"+serverIP+":"+port+directory
+        course = "/courseA"; team_code = "/TUWF";
+        directory = "/heartbeat"+course+team_code;
+        try:
+                url = "http://" + sys.argv[1] + directory
+        except:
+                serverIP = "192.168.0.103"; port="80"; 
+
+                directory += course + team_code
+                url="http://"+serverIP+":"+port+directory
+        print url
         send_beat(url)
