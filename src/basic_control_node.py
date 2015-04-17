@@ -1,35 +1,35 @@
 #!/usr/bin/env python
 '''
  Node to interface motor controllers to ROS
- Looks for motor power and motor node number from ROS 
+ Looks for motor rpm and motor node number from ROS 
  Outputs the motor response information to ROS
 '''
 
 import rospy
-from team_software.msg import MotorPower
+from team_software.msg import MotorRPM
 from team_software.msg import RandTheta
 from team_software.msg import Stop
 
 # Global stopvar
 fuck_the_police = False
 
-def power_level(data,motor_power):
+def set_rpm(data,motor_rpm):
   '''
-  Function to send power levels to motor 
+  Function to send rpm levels to motor 
   '''
 
   if data.theta < 0: 
-    motor_power.power1= 0.1
-    motor_power.power2=-0.1
+    motor_rpm.rpm1= 1000
+    motor_rpm.rpm2=-1000
   elif data.theta > 0:
-    motor_power.power1 = -0.1
-    motor_power.power2 =  0.1
+    motor_rpm.rpm1 = -1000
+    motor_rpm.rpm2 =  1000
   elif data.theta == 0:
-    motor_power.power1 = 0.1
-    motor_power.power2 = 0.1
+    motor_rpm.rpm1 = 1000
+    motor_rpm.rpm2 = 1000
   else: 
-    motor_power.power1 = 0
-    motor_power.power2 = 0
+    motor_rpm.rpm1 = 0
+    motor_rpm.rpm2 = 0
 
 def check_stop(data):
   # Set global for modify purposes
@@ -45,24 +45,24 @@ def motor_node():
   '''
   Top level function to handle connection of motors with ROS
   '''
-  pub = rospy.Publisher('motor_power', MotorPower, queue_size=10)
+  pub = rospy.Publisher('motor_rpm', MotorRPM, queue_size=10)
   rospy.init_node('control_node')
   rate = rospy.Rate(10)
-  motor_power=MotorPower()
+  motor_rpm=MotorRPM()
 
-  motor_power.power1=0.0
-  motor_power.power2=0.0
+  motor_rpm.rpm1=0.0
+  motor_rpm.rpm2=0.0
 
   # spins at rate and puts the motors response on ROS
   # send true on Stop topic to stop motors
   while not rospy.is_shutdown():
     if (fuck_the_police):
-        motor_power.power1=0.0
-        motor_power.power2=0.0
-        pub.publish(motor_power)
+        motor_rpm.rpm1=0.0
+        motor_rpm.rpm2=0.0
+        pub.publish(motor_rpm)
     else:
-      pub.publish(motor_power)
-    rospy.Subscriber("RandTheta", RandTheta, power_level, motor_power)
+      pub.publish(motor_rpm)
+    rospy.Subscriber("RandTheta", RandTheta, set_rpm, motor_rpm)
     rospy.Subscriber("Stop", Stop, check_stop)
     rate.sleep()
 
