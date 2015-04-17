@@ -13,7 +13,7 @@ from team_software.msg import Stop
 # Global stopvar
 fuck_the_police = False
 
-def set_rpm(data,motor_rpm):
+def set_rpm(data,motor_rpm,rpm_scalar):
   '''
   Function to send rpm levels to motor 
   '''
@@ -31,6 +31,11 @@ def set_rpm(data,motor_rpm):
     motor_rpm.rpm1 = 0
     motor_rpm.rpm2 = 0
 
+def polar_to_cart():
+  '''
+  Function to take an R and Theta and convert it to X and
+  '''
+    
 def check_stop(data):
   # Set global for modify purposes
   global fuck_the_police
@@ -52,7 +57,8 @@ def motor_node():
 
   motor_rpm.rpm1=0.0
   motor_rpm.rpm2=0.0
-
+  rpm_scalar=1
+  
   # spins at rate and puts the motors response on ROS
   # send true on Stop topic to stop motors
   while not rospy.is_shutdown():
@@ -62,7 +68,7 @@ def motor_node():
         pub.publish(motor_rpm)
     else:
       pub.publish(motor_rpm)
-    rospy.Subscriber("RandTheta", RandTheta, set_rpm, motor_rpm)
+    rospy.Subscriber("RandTheta", RandTheta, set_rpm, motor_rpm, rpm_scalar)
     rospy.Subscriber("Stop", Stop, check_stop)
     rate.sleep()
 
