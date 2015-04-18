@@ -19,22 +19,18 @@ def set_rpm(data,motor_rpm,rpm_scalar):
   '''
 
   if data.theta < 0: 
-    motor_rpm.rpm1= 1000
-    motor_rpm.rpm2=-1000
+    motor_rpm.rpm0= rpm_scalar*1000*data.r
+    motor_rpm.rpm1= -rpm_scalar*1000*data.r
   elif data.theta > 0:
-    motor_rpm.rpm1 = -1000
-    motor_rpm.rpm2 =  1000
+    motor_rpm.rpm0 = -rpm_scalar*1000*data.r
+    motor_rpm.rpm1 =  rpm_scalar*1000*data.r
   elif data.theta == 0:
-    motor_rpm.rpm1 = 1000
-    motor_rpm.rpm2 = 1000
+    motor_rpm.rpm0 = rpm_scalar*1000*data.r
+    motor_rpm.rpm1 = rpm_scalar*1000*data.r
   else: 
+    motor_rpm.rpm0 = 0
     motor_rpm.rpm1 = 0
-    motor_rpm.rpm2 = 0
 
-def polar_to_cart():
-  '''
-  Function to take an R and Theta and convert it to X and
-  '''
     
 def check_stop(data):
   # Set global for modify purposes
@@ -55,16 +51,16 @@ def motor_node():
   rate = rospy.Rate(10)
   motor_rpm=MotorRPM()
 
+  motor_rpm.rpm0=0.0
   motor_rpm.rpm1=0.0
-  motor_rpm.rpm2=0.0
   rpm_scalar=1
   
   # spins at rate and puts the motors response on ROS
   # send true on Stop topic to stop motors
   while not rospy.is_shutdown():
     if (fuck_the_police):
+        motor_rpm.rpm0=0.0
         motor_rpm.rpm1=0.0
-        motor_rpm.rpm2=0.0
         pub.publish(motor_rpm)
     else:
       pub.publish(motor_rpm)
