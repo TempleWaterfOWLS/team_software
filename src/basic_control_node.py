@@ -13,24 +13,59 @@ from team_software.msg import Stop
 # Global stopvar
 fuck_the_police = False
 
-def set_rpm(data,motor_rpm,rpm_scalar):
+class motor_control ():
+  def __init__(self):
+    self.motor_rpm=MotorRPM()
+    self.motor_rpm.rpm0=0.0
+    self.motor_rpm.rpm1=0.0
+    self.rpm_scalar=200
+    self.pub = rospy.Publisher('motor_rpm', MotorRPM, queue_size=10)
+
+def set_rpm(data,motors):
   '''
   Function to send rpm levels to motor 
+  Angles are increase CCW
+  Motor0 is on left. Motor1 is on right
   '''
-
+  
+  if data.theta <= 90 && data.theta >= 0:
+    motors.motor_rpm.rpm0 = rpm_scalar*(-2*data.r/90*data.theta+data.r)
+    motors.motor_rpm.rpm1 = rpm_scalar*data.r
+    
+  elif data.theta <=360 && data.theta > 270:
+    motors.motor_rpm.rpm0 = rpm_scalar*data.r
+    motors.motor_rpm.rpm1 = rpm_scalar*(-2*data.r/90*data.theta-4*data.r)   
+    
+  elif data.theta <= 180 && data.theta > 90:
+    motors.motor_rpm.rpm0 = rpm_scalar*data.r
+    motors.motor_rpm.rpm1 = rpm_scalar*(-2*data.r/90*data.theta+2*data.r)
+    
+  elif data.theta <= 270 && data.theta > 180:
+    motors.motor_rpm.rpm0 = rpm_scalar*(-2*data.r/90*data.theta-3*data.r)
+    motors.motor_rpm.rpm1 = rpm_scalar*data.r
+  
+  elif data.theta < 0:
+      motors.motor_rpm.rpm0= 0
+      motors.motor_rpm.rpm1= 0
+  else:
+    data.theta=data.theta-360
+    set_rpm(data,motors)
+    
+  motors.pub(motors.motor_rpm)  
+'''
   if data.theta < 0: 
-    motor_rpm.rpm0= rpm_scalar*1000*data.r
-    motor_rpm.rpm1= -rpm_scalar*1000*data.r
+    motor_rpm.rpm0= rpm_scalar*data.r
+    motor_rpm.rpm1= -rpm_scalar*data.r
   elif data.theta > 0:
-    motor_rpm.rpm0 = -rpm_scalar*1000*data.r
-    motor_rpm.rpm1 =  rpm_scalar*1000*data.r
+    motor_rpm.rpm0 = -rpm_scalar*data.r
+    motor_rpm.rpm1 =  rpm_scalar*data.r
   elif data.theta == 0:
-    motor_rpm.rpm0 = rpm_scalar*1000*data.r
-    motor_rpm.rpm1 = rpm_scalar*1000*data.r
+    motor_rpm.rpm0 = rpm_scalar*data.r
+    motor_rpm.rpm1 = rpm_scalar*data.r
   else: 
     motor_rpm.rpm0 = 0
     motor_rpm.rpm1 = 0
-
+'''
     
 def check_stop(data):
   # Set global for modify purposes
@@ -46,25 +81,20 @@ def motor_node():
   '''
   Top level function to handle connection of motors with ROS
   '''
-  pub = rospy.Publisher('motor_rpm', MotorRPM, queue_size=10)
+  motors=motor_control()
   rospy.init_node('control_node')
   rate = rospy.Rate(10)
-  motor_rpm=MotorRPM()
-
-  motor_rpm.rpm0=0.0
-  motor_rpm.rpm1=0.0
-  rpm_scalar=1
-  
+ 
   # spins at rate and puts the motors response on ROS
   # send true on Stop topic to stop motors
   while not rospy.is_shutdown():
     if (fuck_the_police):
-        motor_rpm.rpm0=0.0
-        motor_rpm.rpm1=0.0
-        pub.publish(motor_rpm)
+        motors.motor_rpm.rpm0=0.0
+        motors.motor_rpm.rpm1=0.0
+        pub.publish(motors.motor_rpm)
     else:
-      pub.publish(motor_rpm)
-    rospy.Subscriber("RandTheta", RandTheta, set_rpm, motor_rpm, rpm_scalar)
+      pub.publish(motors.motor_rpm)
+    rospy.Subscriber("RandTheta", RandTheta, set_rpm, motors)
     rospy.Subscriber("Stop", Stop, check_stop)
     rate.sleep()
 
