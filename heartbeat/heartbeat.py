@@ -10,9 +10,13 @@ The heartbeat must send:
 '''
 
 # Imports
-import requests; import json; import sys
+import requests; import json; import sys; import rospy
 from time import strftime, sleep, gmtime
-        
+# Import messages we're listening to 
+try:
+        from team_software.msg import NavSatFix
+except:
+        pass
 # Function designed to print information about the get response for debugging purposes
 def print_response(get_response):
 	print "URL Accesed"
@@ -46,8 +50,9 @@ def send_beat(url):
                 # Print out useful debugging information about the request
                 print_response(post_response)
                 # Delay for next request
-              	print "Sleeping for 300ms"
+              	print "Sleeping for 500ms"
 		sleep(0.5)
+
 
 # Call main boiler plate
 if __name__ == '__main__':
