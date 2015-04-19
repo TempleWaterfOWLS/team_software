@@ -29,20 +29,20 @@ def set_rpm(data,motors):
   '''
   
   if data.theta <= 90 and data.theta >= 0:
-    motors.motor_rpm.rpm0 = rpm_scalar*(-2*data.r/90*data.theta+data.r)
-    motors.motor_rpm.rpm1 = rpm_scalar*data.r
+    motors.motor_rpm.rpm0 = motors.rpm_scalar*(-2*data.r/90*data.theta+data.r)
+    motors.motor_rpm.rpm1 = motors.rpm_scalar*data.r
     
   elif data.theta <=360 and data.theta > 270:
-    motors.motor_rpm.rpm0 = rpm_scalar*data.r
-    motors.motor_rpm.rpm1 = rpm_scalar*(-2*data.r/90*data.theta-4*data.r)   
+    motors.motor_rpm.rpm0 = motors.rpm_scalar*data.r
+    motors.motor_rpm.rpm1 = motors.rpm_scalar*(2*data.r/90*data.theta-7*data.r)   
     
   elif data.theta <= 180 and data.theta > 90:
-    motors.motor_rpm.rpm0 = rpm_scalar*data.r
-    motors.motor_rpm.rpm1 = rpm_scalar*(-2*data.r/90*data.theta+2*data.r)
+    motors.motor_rpm.rpm0 = -motors.rpm_scalar*data.r
+    motors.motor_rpm.rpm1 = motors.rpm_scalar*(-2*data.r/90*data.theta+3*data.r)
     
   elif data.theta <= 270 and data.theta > 180:
-    motors.motor_rpm.rpm0 = rpm_scalar*(-2*data.r/90*data.theta-3*data.r)
-    motors.motor_rpm.rpm1 = rpm_scalar*data.r
+    motors.motor_rpm.rpm0 = motors.rpm_scalar*(2*data.r/90*data.theta-5*data.r)
+    motors.motor_rpm.rpm1 = -motors.rpm_scalar*data.r
   
   elif data.theta < 0:
       motors.motor_rpm.rpm0= 0
@@ -51,7 +51,7 @@ def set_rpm(data,motors):
     data.theta=data.theta-360
     set_rpm(data,motors)
     
-  motors.pub(motors.motor_rpm)  
+ # motors.pub(motors.motor_rpm)  
 '''
   if data.theta < 0: 
     motor_rpm.rpm0= rpm_scalar*data.r
