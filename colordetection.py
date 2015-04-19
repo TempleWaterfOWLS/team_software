@@ -8,17 +8,6 @@ Yellow, Black 				Obstacles
 Yellow, Black, Blue, Green, Red		Acoustic Pinger Buoys
 Yellow, Blue, Green, Red, White		Underwater Light Detection
 
-**************This function has not been properly tested********************
-
-TODO: 
-1)Get better HSV values for all the colors
-
-2)Attempt to threshold better (Erosion? Small particle filter?)
-
-3)Return whether or not a color was detected - perhaps hand in hand with shape detection (only return if shape is a circular buoy).
-
-4)Incorporate ambient light data for dynamic color thresholding?
-
 """
 
 import sys 		
@@ -120,14 +109,13 @@ def color_detect(argv):
 	# Else go right (return positive)
 
 	if right_side > left_side:
-		print "-90"
-		return -90.0
+		return (2,130.0)
 	elif right_side == 0 and left_side == 0:
 		print "0"
-		return 0.0
+		return (2,0.0)
 	else:
 		print "-90"
-		return -90	
+		return (2,30.0)
 def main(argv):
 	# Call color detect
 	color_detect(argv)
