@@ -8,6 +8,8 @@ The heartbeat must send:
   +latitude: float 
   +longitude: float
 '''
+# Global gps_coords
+gps_coords = [0,0]
 
 # Imports
 import requests; import json; import sys; import rospy
@@ -30,8 +32,11 @@ def print_response(get_response):
         return
 
 def send_beat(url):
+        # Ros subscription stuff
+        rospy.init_node('heartbeat')
+        rospy.rate(5)
         # Continually send requests
-        while True:
+        while not rospy.is_shutdown():
 		print "Obtaining payload..."
 		timestamp = strftime("%Y%m%d%H%M%S",gmtime())
 		payload = {
@@ -39,8 +44,8 @@ def send_beat(url):
 			"challenge":"gates",
 			"position" : {
 				"datum": "TUWF",
-				"latitude": 32.0,
-				"longitude": 16.0,
+				"latitude": gps_coords[0],
+				"longitude": gps_coords[1],
 				}
 			   }
 		print "Sending Request..."
@@ -52,6 +57,13 @@ def send_beat(url):
                 # Delay for next request
               	print "Sleeping for 500ms"
 		sleep(0.5)
+                rospy.Subscriber("NavSatFix", NavSatFix, get_GPSfix, gps_coords)
+                rate.sleep()
+
+def get_GPSfix(data,gps_coords):
+        global gps_coords
+        gps_coords[0] = data.latitude
+        gps_coords[1] = data.longitude
 
 
 # Call main boiler plate
