@@ -2,7 +2,7 @@
 Task ASM -> Moves between Tasks
 Subscribes to: Complete msg from Task Checker
 Publishes: Task Info (CurrentTask)
-
+If current task is complete, change the task
 '''
 
 import rospy
@@ -20,7 +20,6 @@ def Complete_Callback(data,task_array):
     # If the complete signal hasn't changed, then don't change task
     if old_complete == data.complete:
         task_index = task_index
-        return
     else:
         if (data.complete != False):
             old_complete = data.complete
@@ -31,6 +30,7 @@ def Complete_Callback(data,task_array):
 
 def task_selector():
     # Current Task Storage
+    dum_var = 0
     task_array = ["speed", "obstacle", "docking","pinger","quad", "return"]
     # Ros publisher stuff
     pub = rospy.Publisher('CurrentTask', CurrentTask, queue_size=10)
