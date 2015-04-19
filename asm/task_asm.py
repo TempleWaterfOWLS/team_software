@@ -4,8 +4,10 @@ Subscribes to: Complete msg from Task Checker
 Publishes: Task Info (CurrentTask)
 If current task is complete, change the task
 '''
-
+import threading
 import rospy
+import subprocess
+
 from team_software.msg import CurrentTask
 from team_software.msg import Complete
 
@@ -13,6 +15,9 @@ from team_software.msg import Complete
 old_complete = False
 # Global task index for finding task 
 task_index = 0
+
+def hbeat():
+    subprocess.call(['python','heartbeat.py'])      
 
 def Complete_Callback(data,task_array):
     global old_complete
@@ -29,8 +34,11 @@ def Complete_Callback(data,task_array):
             old_complete = data.complete
 
 def task_selector():
+    # Start heartbeat
+    t = threading.Thread(target=hbeat)
+    t.setDaemon(True)
+    t.start()
     # Current Task Storage
-    dum_var = 0
     task_array = ["speed", "obstacle", "docking","pinger","quad", "return"]
     # Ros publisher stuff
     pub = rospy.Publisher('CurrentTask', CurrentTask, queue_size=10)

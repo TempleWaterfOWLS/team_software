@@ -27,14 +27,7 @@ import cv2
 import numpy as np
 
 def color_detect(argv):
-	'''
-	# Debug Info
-	print 'Number of arguments:', len(argv), 'arguments.'
-	print 'Argument List:', str(argv)
-	# Grab picture filepath, convert to string:
-	'''
-	filepath = str(argv[0])
-	#print filepath
+	frame = argv
 	# Define HSV bounds for Black, Blue, Green, Red, White, Yellow, Random obstacles:
 	lower_black  = np.array([0,0,20]);    upper_black  = np.array([180,35,53])
 	lower_blue   = np.array([100,45,40]); upper_blue   = np.array([161,114,130])
@@ -53,7 +46,7 @@ def color_detect(argv):
 	lower_white  = np.array([0,0,255]); upper_white  = np.array([10,0,255])
 
 	#Read image in and convert to HSV
-	img = cv2.imread(filepath,cv2.IMREAD_COLOR)
+	img = frame
 	hsvimg = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
 	centerline = img.shape[1] / 2
 
@@ -135,53 +128,6 @@ def color_detect(argv):
 	else:
 		print "-90"
 		return -90	
-	'''
-	# Circle code
-	src = cv2.imread("yoloswag420.png")
-	output = src.copy()
-	gray = bball_cont
-	#gray = cv2.cvtColor(src,cv2.COLOR_BGR2GRAY)
-
-    	circles = cv2.HoughCircles(gray, cv2.cv.CV_HOUGH_GRADIENT, 50, 10, param1=50, param2=30, minRadius=0, maxRadius=0)
-    	cv2.imwrite("GRAY.Png",gray)
-    	if circles is not None:
-		circles = np.round(circles[0,:]).astype("int")
-	        for (x,y,r) in circles:
-        	    cv2.circle(output, (x,y), r, (0,255,0),4)
-        	    cv2.rectangle(output,(x-5,y-5),(x+5,y+5),(0,128,255),-1)
-        	    cv2.imshow("output", np.hstack([src,output]))
-        	    
-		    '''
-
-
-	
-	#Display Pictures
-	cv2.namedWindow('img', cv2.WINDOW_NORMAL)
-	cv2.imshow('img',img)
-	#cv2.namedWindow('bballmask', cv2.WINDOW_NORMAL)
-	#cv2.imshow('bballmask',res)
-	#cv2.namedWindow('bballopen', cv2.WINDOW_NORMAL)
-	#cv2.imshow('bballopen',res4)
-	#cv2.namedWindow('sballmask',cv2.WINDOW_NORMAL)
-	#cv2.imshow('sballmask',res2)
-	#cv2.namedWindow('sballopen',cv2.WINDOW_NORMAL)
-	#cv2.imshow('sballopen',res3)
-	cv2.namedWindow('purp_open',cv2.WINDOW_NORMAL)
-        cv2.imshow('purp_open',res5)
-	cv2.namedWindow('purplemask',cv2.WINDOW_NORMAL)
-        cv2.imshow('purplemask',res6)
-	cv2.namedWindow('green_open',cv2.WINDOW_NORMAL)
-	cv2.imshow('green_open',res7)
-	cv2.namedWindow('greenmask',cv2.WINDOW_NORMAL)
-	cv2.imshow('greenmask',res8)
-	cv2.namedWindow('yellow_open',cv2.WINDOW_NORMAL)
-	cv2.imshow('yellow_open',res9)
-	cv2.namedWindow('yellowmask',cv2.WINDOW_NORMAL)
-	cv2.imshow('yellowmask',res10)
-	cv2.waitKey(0)
-	cv2.destroyAllWindows()
-	return 0
-
 def main(argv):
 	# Call color detect
 	color_detect(argv)

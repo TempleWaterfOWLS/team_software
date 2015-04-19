@@ -13,6 +13,7 @@ Subscribes to task and nav fix
 # Imports
 import requests; import json; import sys; import rospy
 from time import strftime, sleep, gmtime
+from team_software.msg import CurrentTask
 curr_task = "speed"
 
 def CurrentTask_Callback(data):
@@ -50,9 +51,9 @@ def send_beat(url):
 		print "Sending Request..."
 		json_data = json.dumps(payload)
 		print json_data
-                post_response = requests.post(url,data=json_data)
+                #post_response = requests.post(url,data=json_data)
                 # Print out useful debugging information about the request
-                print_response(post_response)
+                #print_response(post_response)
                 # Subscribe to thing
                 rospy.Subscriber("CurrentTask", CurrentTask, CurrentTask_Callback)
                 # Delay for next request
