@@ -35,8 +35,9 @@ def detection_loop():
 	return (r,angle_out)
 
 def main():
-        payload.theta = detection_loop()  
-  
+        (r,theta) = detection_loop()  
+        return (r,theta)
+
 # Boiler plate code
 if __name__ == '__main__':
     try: 

@@ -101,20 +101,21 @@ def color_detect(argv):
 				right_side += 1
 			else:
 				left_side += 1			
+
 	print 'RIGHT ' + str(right_side)
 	print 'LEFT ' + str(left_side)
-
 	# Lazy output logic: 
 	# If right > left, go left (return negative)
 	# Else go right (return positive)
 
 	if right_side > left_side:
+                print "Left"
 		return (2,130.0)
 	elif right_side == 0 and left_side == 0:
-		print "0"
+		print "Straight"
 		return (2,0.0)
 	else:
-		print "-90"
+		print "Right"
 		return (2,30.0)
 def main(argv):
 	# Call color detect

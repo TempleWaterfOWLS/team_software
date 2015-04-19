@@ -7,6 +7,9 @@ If current task is complete, change the task
 import threading
 import rospy
 import subprocess
+import take_frame as tf
+import cv2
+import os
 
 from team_software.msg import CurrentTask
 from team_software.msg import Complete
@@ -18,6 +21,20 @@ task_index = 0
 
 def hbeat():
     subprocess.call(['python','heartbeat.py'])      
+
+def take_img():
+    counter = 0
+    while 1:
+        #try:
+            frame = tf.take_frame()
+            fname = "./image_dump/" + str(counter) + '.jpg'
+            while(os.path.isfile(fname)):
+                counter += 1
+                fname = "./image_dump/" + str(counter) + '.jpg'
+            cv2.imwrite("./image_dump/"+str(counter) + '.jpg' ,frame)
+            counter += 1
+        #except:
+        #    pass
 
 def Complete_Callback(data,task_array):
     global old_complete
@@ -38,6 +55,10 @@ def task_selector():
     t = threading.Thread(target=hbeat)
     t.setDaemon(True)
     t.start()
+    # Start captures
+    d = threading.Thread(target=take_img)
+    d.setDaemon(True)
+    d.start()
     # Current Task Storage
     task_array = ["speed", "obstacle", "docking","pinger","quad", "return"]
     # Ros publisher stuff
