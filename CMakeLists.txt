@@ -49,6 +49,7 @@ find_package(catkin REQUIRED COMPONENTS
    MotorPower.msg
    RandTheta.msg
    Stop.msg
+   MotorRPM.msg
     )
 
 ## Generate services in the 'srv' folder

@@ -28,19 +28,19 @@ def set_rpm(data,motors):
   Motor0 is on left. Motor1 is on right
   '''
   
-  if data.theta <= 90 && data.theta >= 0:
+  if data.theta <= 90 and data.theta >= 0:
     motors.motor_rpm.rpm0 = rpm_scalar*(-2*data.r/90*data.theta+data.r)
     motors.motor_rpm.rpm1 = rpm_scalar*data.r
     
-  elif data.theta <=360 && data.theta > 270:
+  elif data.theta <=360 and data.theta > 270:
     motors.motor_rpm.rpm0 = rpm_scalar*data.r
     motors.motor_rpm.rpm1 = rpm_scalar*(-2*data.r/90*data.theta-4*data.r)   
     
-  elif data.theta <= 180 && data.theta > 90:
+  elif data.theta <= 180 and data.theta > 90:
     motors.motor_rpm.rpm0 = rpm_scalar*data.r
     motors.motor_rpm.rpm1 = rpm_scalar*(-2*data.r/90*data.theta+2*data.r)
     
-  elif data.theta <= 270 && data.theta > 180:
+  elif data.theta <= 270 and data.theta > 180:
     motors.motor_rpm.rpm0 = rpm_scalar*(-2*data.r/90*data.theta-3*data.r)
     motors.motor_rpm.rpm1 = rpm_scalar*data.r
   
@@ -91,9 +91,9 @@ def motor_node():
     if (fuck_the_police):
         motors.motor_rpm.rpm0=0.0
         motors.motor_rpm.rpm1=0.0
-        pub.publish(motors.motor_rpm)
+        motors.pub.publish(motors.motor_rpm)
     else:
-      pub.publish(motors.motor_rpm)
+       motors. pub.publish(motors.motor_rpm)
     rospy.Subscriber("RandTheta", RandTheta, set_rpm, motors)
     rospy.Subscriber("Stop", Stop, check_stop)
     rate.sleep()
