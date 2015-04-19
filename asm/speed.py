@@ -15,6 +15,7 @@ from team_software.msg import RandTheta
 
 def main():
         # ROS publisher stuff
+ 	counter = 0
 	suicide_pub = rospy.Publisher('SuicideTask',SuicideTask, queue_size=10)
         rtheta_pub = rospy.Publisher('RandTheta',RandTheta, queue_size=10)
         rospy.init_node('speednode')
@@ -33,6 +34,8 @@ def main():
                 rtheta_pub.publish(rtheta_msg)
                 # Sleep for important reasons
                 rate.sleep()
-
+		counter += 1
+		print 'swag'
+		if (counter == 5): suicide_msg.suicidetask = True
 if __name__ == '__main__':
 	main()
