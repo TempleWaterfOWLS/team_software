@@ -25,16 +25,17 @@ def hbeat():
 def take_img():
     counter = 0
     while 1:
-        #try:
+        try:
             frame = tf.take_frame()
-            fname = "./image_dump/" + str(counter) + '.jpg'
-            while(os.path.isfile(fname)):
-                counter += 1
+            if (frame): 
                 fname = "./image_dump/" + str(counter) + '.jpg'
-            cv2.imwrite("./image_dump/"+str(counter) + '.jpg' ,frame)
-            counter += 1
-        #except:
-        #    pass
+                while(os.path.isfile(fname)):
+                    counter += 1
+                    fname = "./image_dump/" + str(counter) + '.jpg'
+                cv2.imwrite("./image_dump/"+str(counter) + '.jpg' ,frame)
+                counter += 1
+        except:
+            pass
 
 def Complete_Callback(data,task_array):
     global old_complete
