@@ -402,7 +402,7 @@ int save3dPoints( FC2::Image      const & grabbedImage,
     TriclopsImage monoImage = {0};
     TriclopsColorImage colorImage = {0};
     TriclopsError te;
-
+    
     TriclopsTransform transform;
     float            x, y, z; 
     int	            r, g, b;
