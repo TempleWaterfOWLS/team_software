@@ -31,21 +31,10 @@ task_index = 0
 def hbeat():
     subprocess.call(['python','heartbeat.py'])      
 
-# Save image data and disparity (unning on separate thread)
+# Save image data and disparity (running on separate thread)
 def take_img():
-    counter = 0
     while 1:
-        try:
-            frame = tf.take_frame()
-            if (frame): 
-                fname = "./image_dump/" + str(counter) + '.jpg'
-                while(os.path.isfile(fname)):
-                    counter += 1
-                    fname = "./image_dump/" + str(counter) + '.jpg'
-                cv2.imwrite("./image_dump/"+str(counter) + '.jpg' ,frame)
-                counter += 1
-        except:
-            pass
+         tf.get_data()
 
 def Complete_Callback(data,task_array):
     '''

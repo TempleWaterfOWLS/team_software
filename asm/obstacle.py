@@ -10,7 +10,8 @@ Attempts to navigate around obstacles... I guess
 
 import sys
 sys.path.insert(0,'..')
-import obstacle_avoidance_main as OA
+import colordetection as cd
+import take_frame as tf
 import time
 import rospy
 # Import time stuff like a champ for filename writing
@@ -28,10 +29,17 @@ def main():
         # Initialize messages
         suicide_msg = SuicideTask(); suicide_msg.suicidetask = False
         rtheta_msg = RandTheta(); rtheta_msg.r = 0; rtheta_msg.theta = 0; 
+	framepath = './frames'
+	disparitypath = './disparity'
         # Main loop
 	while not rospy.is_shutdown():
 		# Grab most recent image and disparity
-                (rtheta_msg.r,rtheta_msg.theta) = OA.detection_loop()
+		ffiles = [f for f in listdir(framepath) if isfile(join(framepath,f)) ]
+		frame = max(ofiles,key=getmtime)
+		dfiles = [f for f in listdir(disparitypath) if isfile(join(disparitypath,f)) ]
+		disparity_file = max(dfiles,key=getmtime)
+		# Run color detection on it
+                (rtheta_msg.r,rtheta_msg.theta) = cd.color_detect(cv2.imread(frame))
                 # Publish task status
                 suicide_pub.publish(suicide_msg)
                 # Publish Motor stuff

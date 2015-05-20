@@ -1,2 +1,4 @@
 -Heartbeat code (heartbeat.py in asm) is not updated to send POST requests
 -Heartbeat code requires GPS data, dummy values stored right now
+-Still need to fix OA so it uses bumblebee (everything is aleady saved)
+

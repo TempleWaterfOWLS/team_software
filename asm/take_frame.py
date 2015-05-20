@@ -9,13 +9,12 @@ Written by Zack Smith (5-19-15)
 ''' 
 
 # Imports 
+# Call required for triclops code
 from subprocess import call
-
-# Real modules
-import cv2
+# Import for filename writing
 from time import strftime, gmtime
-import rospy
-
+# OS imports for file sorting and bash scripting
+from os import system
 
 def get_data():
 	''' 
@@ -24,9 +23,13 @@ def get_data():
 	-Disparity for said image
 	'''
         # Grab frame
-	cpp_file = "./triclops/src/examples/common/stereoto3dpoints/stereoto3dpoints"
+	cpp_file = "../triclops/src/examples/common/stereoto3dpoints/stereoto3dpoints"
 	call(cpp_file)
-	
+	# Files created are out.pts and rectified.pgm
+	timestamp = strftime("%Y%m%d%H%M%S",gmtime())
+	# Save files to temp storage
+	system("mv rectified.pgm ./test_data/" + timestamp + ".pgm")
+	system("mv out.pts ./test_data/" + timestamp + ".pts")
 
 def main():
         get_data()

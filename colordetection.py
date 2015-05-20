@@ -110,10 +110,10 @@ def color_detect(argv):
 
 	if right_side > left_side:
                 print "Left"
-		return (2,130.0)
+		return (2,180.0)
 	elif right_side == 0 and left_side == 0:
 		print "Straight"
-		return (2,0.0)
+		return (2,90.0)
 	else:
 		print "Right"
 		return (2,30.0)
