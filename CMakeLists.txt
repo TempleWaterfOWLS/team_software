@@ -54,6 +54,7 @@ find_package(catkin REQUIRED COMPONENTS
    KillTask.msg
    Complete.msg
    CurrentTask.msg
+   MotorRPM.msg
     )
 
 ## Generate services in the 'srv' folder
