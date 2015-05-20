@@ -28,6 +28,7 @@ def main():
                 # Do main code
                 # Just go straight
                 rtheta_msg.r = 2;
+		rtheta_msg.theta = 90; 
                 # Publish task status
                 suicide_pub.publish(suicide_msg)
                 # Publish Motor stuff
@@ -36,6 +37,6 @@ def main():
                 rate.sleep()
 		counter += 1
 		print 'swag'
-		if (counter == 5): suicide_msg.suicidetask = True
+		if (counter == 10): suicide_msg.suicidetask = True
 if __name__ == '__main__':
 	main()

@@ -4,24 +4,34 @@ Subscribes to: Complete msg from Task Checker
 Publishes: Task Info (CurrentTask)
 If current task is complete, change the task
 '''
+
+# Heartbeat runs on independent thread
 import threading
+# ROS signaling 
 import rospy
+# Used to call individual tasks via bash
 import subprocess
+# Will phase this out
 import take_frame as tf
 import cv2
+# Saving images may phase out
 import os
 
+# ROS Messages
 from team_software.msg import CurrentTask
 from team_software.msg import Complete
 
 # Global break var for switching tasks
 old_complete = False
 # Global task index for finding task 
+# Considering an initial optional user input to set task
 task_index = 0
 
+# Call heartbeat code (running on separate thread)
 def hbeat():
     subprocess.call(['python','heartbeat.py'])      
 
+# Save image data and disparity (unning on separate thread)
 def take_img():
     counter = 0
     while 1:
@@ -38,6 +48,9 @@ def take_img():
             pass
 
 def Complete_Callback(data,task_array):
+    '''
+    Function to deal with a completed task (activates when ROS msg 'Complete' changes)
+    '''
     global old_complete
     global task_index
     # If the complete signal hasn't changed, then don't change task
@@ -52,14 +65,22 @@ def Complete_Callback(data,task_array):
             old_complete = data.complete
 
 def task_selector():
+    ''' 
+    Main function for ASM, starts normal operation
+    Initializes heartbeat
+    Starts data collection
+    Manages processes
+    '''
+    ### Seperate Thread Initialization ###
     # Start heartbeat
     t = threading.Thread(target=hbeat)
     t.setDaemon(True)
     t.start()
-    # Start captures
+    # Start data capture
     d = threading.Thread(target=take_img)
     d.setDaemon(True)
     d.start()
+    ### Process Management Section ###
     # Current Task Storage
     task_array = ["speed", "obstacle", "docking","pinger","quad", "return"]
     # Ros publisher stuff

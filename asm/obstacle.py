@@ -11,11 +11,10 @@ Attempts to navigate around obstacles... I guess
 import sys
 sys.path.insert(0,'..')
 import obstacle_avoidance_main as OA
+import time
 import rospy
-
 # Import time stuff like a champ for filename writing
 from time import strftime, sleep, gmtime
-
 # Publish messages
 from team_software.msg import SuicideTask
 from team_software.msg import RandTheta

@@ -1,11 +1,39 @@
 #!/usr/bin/env python
+'''
+Code to take and save frames and disparities using the bumblebee2 camera
+Writes data based off of curent time
+-Timestamp:  YYYYMMDDHHMMSS in UTC
+Probably wildly inefficient
+
+Written by Zack Smith (5-19-15)
+''' 
+
+# Imports 
+from subprocess import call
+
+# Real modules
 import cv2
+from time import strftime, gmtime
+import rospy
 
 
-def take_frame():
-    cam = cv2.VideoCapture(0)   # 0 -> index of camera
-    s, img = cam.read()
-    return img
+def get_data():
+	''' 
+	Function to obtain & save two main data points:
+	-Rectified image
+	-Disparity for said image
+	'''
+        # Grab frame
+        frame = fcap.take_frame()
+	(r,angle_out) = cd.color_detect(frame)
+	
 
+def main():
+	
+# Boiler plate code
 if __name__ == '__main__':
-    take_frame()
+    try: 
+	main()
+    except rospy.ROSInterruptException:
+	pass
+

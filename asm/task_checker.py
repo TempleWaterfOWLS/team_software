@@ -42,7 +42,7 @@ def CurrentTask_Callback(data,complete_msg):
     global curr_task; global process_id; 
     # If new task, start up new function, and kill old one
     if (curr_task != data.currentTask):
-        # Kill last process
+        # Kill old process
         if (process_id != None):
             os.kill(process_id, signal.SIGKILL)
         curr_task = data.currentTask
@@ -55,8 +55,7 @@ def SuicideTask_Callback(data,complete_msg):
     Function that gets called when a task wants to be killed
     '''
     # If task is suicidal, clear data.suicide, set complete true
-    # In current task, set complete back to false
-    # Just publish complete. This will force task forward and delete current
+    # Publishing task as complete will remove current task
     if (data.suicidetask):
         data.suicidetask = False
         complete_msg.complete = True
@@ -68,18 +67,18 @@ def task_executor():
     '''
     # Ros publisher stuff
     complete_pub = rospy.Publisher('Complete', Complete, queue_size=10)
-    taskstop_pub = rospy.Publisher('TaskStop', TaskStop, queue_size=10)
+    #taskstop_pub = rospy.Publisher('TaskStop', TaskStop, queue_size=10)
     rospy.init_node('taskcheck')
     rate = rospy.Rate(10)
     complete_msg = Complete()
-    stop_msg = TaskStop()
+    #stop_msg = TaskStop()
     complete_msg.complete = False 
-    stop_msg.taskstop = "NoNeed"
+    #stop_msg.taskstop = "NoNeed"
     while not rospy.is_shutdown():
         # Publish Status
         complete_pub.publish(complete_msg)
         # Publish kill command
-        taskstop_pub.publish(stop_msg)
+        #taskstop_pub.publish(stop_msg)
         # Grab current task and any kill signal
         rospy.Subscriber("CurrentTask", CurrentTask, CurrentTask_Callback,complete_msg)
         rospy.Subscriber("SuicideTask", SuicideTask, SuicideTask_Callback,complete_msg)

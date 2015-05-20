@@ -13,6 +13,7 @@ Subscribes to task and nav fix
 # Imports
 import requests; import json; import sys; import rospy
 from time import strftime, sleep, gmtime
+
 from team_software.msg import CurrentTask
 curr_task = "speed"
 
@@ -43,7 +44,7 @@ def send_beat(url):
 			"timestamp":timestamp,
 			"challenge":curr_task,
 			"position" : {
-				"datum": "TUWF",
+				"datum": "WGS84",
 				"latitude": 32.0,
 				"longitude": 16.0,
 				}
@@ -63,8 +64,8 @@ def send_beat(url):
 # Call main boiler plate
 if __name__ == '__main__':
 	# Declare serverIP, port, and desired index to create URL
-	serverIP = "192.168.0.103"; port="80"; directory = "/heartbeat/";
-	course = "/courseA/"; team_code = "/TUWF";
+	serverIP = "192.168.0.103"; port="80"; directory = "/heartbeat";
+	course = "/courseA"; team_code = "/TUWF";
 	directory += course + team_code
 	url="http://"+serverIP+":"+port+directory
         send_beat(url)
