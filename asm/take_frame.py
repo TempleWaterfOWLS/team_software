@@ -24,12 +24,13 @@ def get_data():
 	-Disparity for said image
 	'''
         # Grab frame
-        frame = fcap.take_frame()
-	(r,angle_out) = cd.color_detect(frame)
+	cpp_file = "./triclops/src/examples/common/stereoto3dpoints/stereoto3dpoints"
+	call(cpp_file)
 	
 
 def main():
-	
+        get_data()
+
 # Boiler plate code
 if __name__ == '__main__':
     try: 
