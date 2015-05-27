@@ -18,11 +18,11 @@ import numpy as np
 def color_detect(argv):
 	frame = argv
 	# Define HSV bounds for Black, Blue, Green, Red, White, Yellow, Random obstacles:
-	lower_black  = np.array([0,0,20]);    upper_black  = np.array([180,35,53])
+	lower_black  = np.array([3,19,11]);    upper_black  = np.array([18,164,98])
 	lower_blue   = np.array([100,45,40]); upper_blue   = np.array([161,114,130])
-	lower_green  = np.array([41,133,73]);  upper_green  = np.array([57,255,167])
-	lower_red    = np.array([174,50,50]); upper_red    = np.array([180,255,255])        
-	lower_yellow = np.array([16,71,117]); upper_yellow = np.array([38,189,189])
+	lower_green  = np.array([42,7,9]);  upper_green  = np.array([80,142,128])
+	lower_red    = np.array([0,189,249]); upper_red    = np.array([28,239,255])        
+	lower_yellow = np.array([14,51,245]); upper_yellow = np.array([34,218,255])
 
 	# BB2: lower_bball = np.array([2,111,0]); upper_bball = np.array([7,179,219])
 	lower_bball = np.array([0,216,9]); upper_bball = np.array([10,255,134])	        
@@ -32,10 +32,10 @@ def color_detect(argv):
 	# Purple Ball
 	lower_purple = np.array([120,131,43]); upper_purple = np.array([131,255,111])
         # White not really defined so well
-	lower_white  = np.array([0,0,255]); upper_white  = np.array([10,0,255])
+	lower_white  = np.array([5,86,138]); upper_white  = np.array([15,139,255])
 
 	#Read image in and convert to HSV
-	img = frame
+	img = frame[0:220,0:319]
 	hsvimg = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
 	centerline = img.shape[1] / 2
 

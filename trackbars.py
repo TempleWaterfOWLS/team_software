@@ -15,7 +15,7 @@ cv2.createTrackbar('Vlow','image',0,255,nothing)
 cv2.createTrackbar('Hhigh','image',0,179,nothing)
 cv2.createTrackbar('Shigh','image',0,255,nothing)
 cv2.createTrackbar('Vhigh','image',0,255,nothing)
-frame = cv2.imread('rectified.jpg')
+frame = cv2.imread('rectified.pgm')
 #frame = cv2.bilateralFilter(frame,11,100,100)
 # 0 0 0, 44 73 63
 

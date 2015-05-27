@@ -32,11 +32,11 @@ def main():
                 # Publish task status
                 suicide_pub.publish(suicide_msg)
                 # Publish Motor stuff
-                rtheta_pub.publish(rtheta_msg)
+                #rtheta_pub.publish(rtheta_msg)
                 # Sleep for important reasons
                 rate.sleep()
 		counter += 1
 		print 'swag'
-		if (counter == 10): suicide_msg.suicidetask = True
+
 if __name__ == '__main__':
 	main()
