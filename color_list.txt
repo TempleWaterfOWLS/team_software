@@ -1,9 +1,0 @@
-Blue life: [108 45 40] [161 114 130]
-Red Construction: [174 50 50], [180 255 255], also [0->10 H]
-Green Things: [26 50 50], [76 255 255]
-Yellow Things: [18 50 133], [28 120 255]
-black: 	       [0 0 20],    [179, 35, 53]
-Basketballish: [0 97 51], [179 152 149]
-Stricter Basketballish: [0 84 51] [179 128 87]
-Strict Soccer Ball: [0 0 24] [179 100 41]
-
