@@ -8,17 +8,22 @@ Attempts to navigate around obstacles... I guess
 
 '''
 
+# Import for grabbing functions not in folder
 import sys
 sys.path.insert(0,'..')
+# Imports for grabbing most recent frame
+from os import listdir
+from os.path import getmtime, isfile, join
+# Roboboat functions
 import colordetection as cd
 import take_frame as tf
-import time
+# ROS imports
 import rospy
-# Import time stuff like a champ for filename writing
-from time import strftime, sleep, gmtime
+
 # Publish messages
 from team_software.msg import SuicideTask
 from team_software.msg import RandTheta
+
 
 def main():
         # ROS publisher stuff

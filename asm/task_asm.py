@@ -11,10 +11,9 @@ import threading
 import rospy
 # Used to call individual tasks via bash
 import subprocess
-# Will phase this out
+# Used to take and save images
 import take_frame as tf
 import cv2
-# Saving images may phase out
 import os
 
 # ROS Messages
