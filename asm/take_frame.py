@@ -28,8 +28,11 @@ def get_data():
 	# Files created are out.pts and rectified.pgm
 	timestamp = strftime("%Y%m%d%H%M%S",gmtime())
 	# Save files to temp storage
-	system("cp rectified.pgm ./frames/" + timestamp + ".pgm")
-	system("cp out.pts ./disparity/" + timestamp + ".pts")
+	try:
+		system("cp rectified.pgm ./frames/" + timestamp + ".pgm")
+		system("cp out.pts ./disparity/" + timestamp + ".pts")
+	except:
+		pass
 
 def main():
         get_data()
