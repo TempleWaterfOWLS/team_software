@@ -5,7 +5,7 @@ Subscribes to:
 -Complete Signals (from different task nodes -> Publish node name, check if active task)
 
 Publishes: 
--Complete (ASM.py subscribes)
+-Complete (task_asm.py subscribes)
 -Kill Command (stops current task)
 
 '''

@@ -45,9 +45,11 @@ def Complete_Callback(data,task_array):
     if old_complete == data.complete:
         task_index = task_index
     else:
-        if (data.complete != False):
+        # If complete is true, change the task 
+        if (data.complete):
             old_complete = data.complete
             task_index = task_index+1
+            # Make sure you don't go past the max length of task array
             if (task_index >= len(task_array)): task_index = len(task_array) - 1
         else:
             old_complete = data.complete
@@ -59,16 +61,19 @@ def task_selector():
     Starts data collection
     Manages processes
     '''
-    ### Seperate Thread Initialization ###
-    # Start heartbeat
+    ### Thread Initializations ###
+
+    ### Heartbeat
     t = threading.Thread(target=hbeat)
     t.setDaemon(True)
     t.start()
-    # Start data capture
+    ### Frame Capture
     d = threading.Thread(target=take_img)
     d.setDaemon(True)
     d.start()
+
     ### Process Management Section ###
+
     # Current Task Storage
     task_array = ["speed", "obstacle", "docking","pinger","quad", "return"]
     # Ros publisher stuff
