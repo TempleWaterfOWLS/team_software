@@ -37,14 +37,18 @@ def main():
 	framepath = './frames'
 	disparitypath = './disparity'
         # Main loop
+        frame = ''
 	while not rospy.is_shutdown():
+                old_frame = frame
 		# Grab most recent image and disparity
 		ffiles = [f for f in listdir(framepath) if isfile(join(framepath,f)) ]
-		frame = max(ofiles,key=getmtime)
 		dfiles = [f for f in listdir(disparitypath) if isfile(join(disparitypath,f)) ]
+		frame = max(ofiles,key=getmtime)
 		disparity_file = max(dfiles,key=getmtime)
-		# Run color detection on it
-                (rtheta_msg.r,rtheta_msg.theta) = cd.color_detect(cv2.imread(frame))
+                # Check to make sure processing is not done on same image twice
+                if old_frame != frame:
+                        # Run color detection on it
+                        (rtheta_msg.r,rtheta_msg.theta) = cd.color_detect(cv2.imread(frame))
                 # Publish task status
                 suicide_pub.publish(suicide_msg)
                 # Publish Motor stuff
