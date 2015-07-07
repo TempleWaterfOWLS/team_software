@@ -68,20 +68,22 @@ def set_rpm(data,motors):
 '''
     
 def check_stop(data):
+  '''
+  ROS Callback on Stop message
+  Sets motor values to 0 until the stop message is 'False'
+  '''
   # Set global for modify purposes
   global fuck_the_police
   fuck_the_police = data.stop
-  '''
-  if (data.stop == 0.0):
-    fuck_the_police = False
-  else: 
-    fuck_the_police = True
-  '''  
+
 def motor_node():
   '''
   Top level function to handle connection of motors with ROS
   '''
+  # Create instance of motor_control class
+  # Class contains: ROS RPM Message contents to be published derived from input R and Theta
   motors=motor_control()
+  # Initialize ROS Node
   rospy.init_node('control_node')
   rate = rospy.Rate(10)
  
@@ -93,7 +95,8 @@ def motor_node():
         motors.motor_rpm.rpm1=0.0
         motors.pub.publish(motors.motor_rpm)
     else:
-       motors. pub.publish(motors.motor_rpm)
+       motors.pub.publish(motors.motor_rpm)
+    # ROS subscriber handlers - Callback functions: set_rpm, check_stop
     rospy.Subscriber("RandTheta", RandTheta, set_rpm, motors)
     rospy.Subscriber("Stop", Stop, check_stop)
     rate.sleep()

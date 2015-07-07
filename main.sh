@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $1 == "kill" ]; then
+if [ "$1" == "kill" ]; then
     echo "Ending Processes..."
     killall python
 else
