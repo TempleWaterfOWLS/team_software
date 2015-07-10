@@ -1,0 +1,6 @@
+To send a request which will be routed:
+mitmproxy -p port_to_send_requests -P site_to_be_routed_to
+
+example: while running proxy_server.py: 
+	mitmproxy -p 3333 -P http://localhost:6666
+Requests to localhost:3333 will now redirect to localhost:6666
