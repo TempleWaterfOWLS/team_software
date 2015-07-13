@@ -1,0 +1,314 @@
+http://ec2-54-210-13-60.compute-1.amazonaws.com/run/start/courseB/TUCE
+URL Accesed: http://ec2-54-210-13-60.compute-1.amazonaws.com/ping
+Status Code:
+200
+Headers:
+{'content-length': '4', 'content-type': 'text/plain', 'server': 'Jetty(9.2.11.v20150529)'}
+Text content:
+pong
+URL Accesed: http://ec2-54-210-13-60.compute-1.amazonaws.com/run/start/courseB/TUCE
+Status Code:
+400
+Headers:
+{'content-length': '310', 'server': 'Jetty(9.2.11.v20150529)', 'content-type': 'text/html; charset=ISO-8859-1', 'cache-control': 'must-revalidate,no-cache,no-store'}
+Text content:
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Error 400 Bad Request</title>
+</head>
+<body><h2>HTTP ERROR 400</h2>
+<p>Problem accessing /run/start/courseB/TUCE. Reason:
+<pre>    Bad Request</pre></p><hr><i><small>Powered by Jetty://</small></i><hr/>
+
+</body>
+</html>
+
+URL Accesed: http://ec2-54-210-13-60.compute-1.amazonaws.com/run/start/courseB/TUCE
+Status Code:
+400
+Headers:
+{'content-length': '310', 'server': 'Jetty(9.2.11.v20150529)', 'content-type': 'text/html; charset=ISO-8859-1', 'cache-control': 'must-revalidate,no-cache,no-store'}
+Text content:
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Error 400 Bad Request</title>
+</head>
+<body><h2>HTTP ERROR 400</h2>
+<p>Problem accessing /run/start/courseB/TUCE. Reason:
+<pre>    Bad Request</pre></p><hr><i><small>Powered by Jetty://</small></i><hr/>
+
+</body>
+</html>
+
+URL Accesed: http://ec2-54-210-13-60.compute-1.amazonaws.com/run/start/courseB/TUCE
+Status Code:
+400
+Headers:
+{'content-length': '310', 'server': 'Jetty(9.2.11.v20150529)', 'content-type': 'text/html; charset=ISO-8859-1', 'cache-control': 'must-revalidate,no-cache,no-store'}
+Text content:
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Error 400 Bad Request</title>
+</head>
+<body><h2>HTTP ERROR 400</h2>
+<p>Problem accessing /run/start/courseB/TUCE. Reason:
+<pre>    Bad Request</pre></p><hr><i><small>Powered by Jetty://</small></i><hr/>
+
+</body>
+</html>
+
+URL Accesed: http://ec2-54-210-13-60.compute-1.amazonaws.com/run/start/courseB/TUCE
+Status Code:
+400
+Headers:
+{'content-length': '310', 'server': 'Jetty(9.2.11.v20150529)', 'content-type': 'text/html; charset=ISO-8859-1', 'cache-control': 'must-revalidate,no-cache,no-store'}
+Text content:
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Error 400 Bad Request</title>
+</head>
+<body><h2>HTTP ERROR 400</h2>
+<p>Problem accessing /run/start/courseB/TUCE. Reason:
+<pre>    Bad Request</pre></p><hr><i><small>Powered by Jetty://</small></i><hr/>
+
+</body>
+</html>
+
+URL Accesed: http://ec2-54-210-13-60.compute-1.amazonaws.com/run/start/courseB/TUCE
+Status Code:
+400
+Headers:
+{'content-length': '310', 'server': 'Jetty(9.2.11.v20150529)', 'content-type': 'text/html; charset=ISO-8859-1', 'cache-control': 'must-revalidate,no-cache,no-store'}
+Text content:
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Error 400 Bad Request</title>
+</head>
+<body><h2>HTTP ERROR 400</h2>
+<p>Problem accessing /run/start/courseB/TUCE. Reason:
+<pre>    Bad Request</pre></p><hr><i><small>Powered by Jetty://</small></i><hr/>
+
+</body>
+</html>
+
+URL Accesed: http://ec2-54-210-13-60.compute-1.amazonaws.com/run/start/courseB/TUCE
+Status Code:
+400
+Headers:
+{'content-length': '310', 'server': 'Jetty(9.2.11.v20150529)', 'content-type': 'text/html; charset=ISO-8859-1', 'cache-control': 'must-revalidate,no-cache,no-store'}
+Text content:
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Error 400 Bad Request</title>
+</head>
+<body><h2>HTTP ERROR 400</h2>
+<p>Problem accessing /run/start/courseB/TUCE. Reason:
+<pre>    Bad Request</pre></p><hr><i><small>Powered by Jetty://</small></i><hr/>
+
+</body>
+</html>
+
+URL Accesed: http://ec2-54-210-13-60.compute-1.amazonaws.com/run/start/courseB/TUCE
+Status Code:
+400
+Headers:
+{'content-length': '310', 'server': 'Jetty(9.2.11.v20150529)', 'content-type': 'text/html; charset=ISO-8859-1', 'cache-control': 'must-revalidate,no-cache,no-store'}
+Text content:
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Error 400 Bad Request</title>
+</head>
+<body><h2>HTTP ERROR 400</h2>
+<p>Problem accessing /run/start/courseB/TUCE. Reason:
+<pre>    Bad Request</pre></p><hr><i><small>Powered by Jetty://</small></i><hr/>
+
+</body>
+</html>
+
+URL Accesed: http://ec2-54-210-13-60.compute-1.amazonaws.com/run/start/courseB/TUCE
+Status Code:
+400
+Headers:
+{'content-length': '310', 'server': 'Jetty(9.2.11.v20150529)', 'content-type': 'text/html; charset=ISO-8859-1', 'cache-control': 'must-revalidate,no-cache,no-store'}
+Text content:
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Error 400 Bad Request</title>
+</head>
+<body><h2>HTTP ERROR 400</h2>
+<p>Problem accessing /run/start/courseB/TUCE. Reason:
+<pre>    Bad Request</pre></p><hr><i><small>Powered by Jetty://</small></i><hr/>
+
+</body>
+</html>
+
+URL Accesed: http://ec2-54-210-13-60.compute-1.amazonaws.com/run/start/courseB/TUCE
+Status Code:
+400
+Headers:
+{'content-length': '310', 'server': 'Jetty(9.2.11.v20150529)', 'content-type': 'text/html; charset=ISO-8859-1', 'cache-control': 'must-revalidate,no-cache,no-store'}
+Text content:
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Error 400 Bad Request</title>
+</head>
+<body><h2>HTTP ERROR 400</h2>
+<p>Problem accessing /run/start/courseB/TUCE. Reason:
+<pre>    Bad Request</pre></p><hr><i><small>Powered by Jetty://</small></i><hr/>
+
+</body>
+</html>
+
+URL Accesed: http://ec2-54-210-13-60.compute-1.amazonaws.com/run/start/courseB/TUCE
+Status Code:
+400
+Headers:
+{'content-length': '310', 'server': 'Jetty(9.2.11.v20150529)', 'content-type': 'text/html; charset=ISO-8859-1', 'cache-control': 'must-revalidate,no-cache,no-store'}
+Text content:
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Error 400 Bad Request</title>
+</head>
+<body><h2>HTTP ERROR 400</h2>
+<p>Problem accessing /run/start/courseB/TUCE. Reason:
+<pre>    Bad Request</pre></p><hr><i><small>Powered by Jetty://</small></i><hr/>
+
+</body>
+</html>
+
+URL Accesed: http://ec2-54-210-13-60.compute-1.amazonaws.com/run/start/courseB/TUCE
+Status Code:
+400
+Headers:
+{'content-length': '310', 'server': 'Jetty(9.2.11.v20150529)', 'content-type': 'text/html; charset=ISO-8859-1', 'cache-control': 'must-revalidate,no-cache,no-store'}
+Text content:
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Error 400 Bad Request</title>
+</head>
+<body><h2>HTTP ERROR 400</h2>
+<p>Problem accessing /run/start/courseB/TUCE. Reason:
+<pre>    Bad Request</pre></p><hr><i><small>Powered by Jetty://</small></i><hr/>
+
+</body>
+</html>
+
+URL Accesed: http://ec2-54-210-13-60.compute-1.amazonaws.com/run/start/courseB/TUCE
+Status Code:
+400
+Headers:
+{'content-length': '310', 'server': 'Jetty(9.2.11.v20150529)', 'content-type': 'text/html; charset=ISO-8859-1', 'cache-control': 'must-revalidate,no-cache,no-store'}
+Text content:
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Error 400 Bad Request</title>
+</head>
+<body><h2>HTTP ERROR 400</h2>
+<p>Problem accessing /run/start/courseB/TUCE. Reason:
+<pre>    Bad Request</pre></p><hr><i><small>Powered by Jetty://</small></i><hr/>
+
+</body>
+</html>
+
+URL Accesed: http://ec2-54-210-13-60.compute-1.amazonaws.com/run/start/courseB/TUCE
+Status Code:
+400
+Headers:
+{'content-length': '310', 'server': 'Jetty(9.2.11.v20150529)', 'content-type': 'text/html; charset=ISO-8859-1', 'cache-control': 'must-revalidate,no-cache,no-store'}
+Text content:
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Error 400 Bad Request</title>
+</head>
+<body><h2>HTTP ERROR 400</h2>
+<p>Problem accessing /run/start/courseB/TUCE. Reason:
+<pre>    Bad Request</pre></p><hr><i><small>Powered by Jetty://</small></i><hr/>
+
+</body>
+</html>
+
+URL Accesed: http://ec2-54-210-13-60.compute-1.amazonaws.com/run/start/courseB/TUCE
+Status Code:
+400
+Headers:
+{'content-length': '310', 'server': 'Jetty(9.2.11.v20150529)', 'content-type': 'text/html; charset=ISO-8859-1', 'cache-control': 'must-revalidate,no-cache,no-store'}
+Text content:
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Error 400 Bad Request</title>
+</head>
+<body><h2>HTTP ERROR 400</h2>
+<p>Problem accessing /run/start/courseB/TUCE. Reason:
+<pre>    Bad Request</pre></p><hr><i><small>Powered by Jetty://</small></i><hr/>
+
+</body>
+</html>
+
+URL Accesed: http://ec2-54-210-13-60.compute-1.amazonaws.com/run/start/courseB/TUCE
+Status Code:
+400
+Headers:
+{'content-length': '310', 'server': 'Jetty(9.2.11.v20150529)', 'content-type': 'text/html; charset=ISO-8859-1', 'cache-control': 'must-revalidate,no-cache,no-store'}
+Text content:
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Error 400 Bad Request</title>
+</head>
+<body><h2>HTTP ERROR 400</h2>
+<p>Problem accessing /run/start/courseB/TUCE. Reason:
+<pre>    Bad Request</pre></p><hr><i><small>Powered by Jetty://</small></i><hr/>
+
+</body>
+</html>
+
+URL Accesed: http://ec2-54-210-13-60.compute-1.amazonaws.com/run/start/courseB/TUCE
+Status Code:
+400
+Headers:
+{'content-length': '310', 'server': 'Jetty(9.2.11.v20150529)', 'content-type': 'text/html; charset=ISO-8859-1', 'cache-control': 'must-revalidate,no-cache,no-store'}
+Text content:
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Error 400 Bad Request</title>
+</head>
+<body><h2>HTTP ERROR 400</h2>
+<p>Problem accessing /run/start/courseB/TUCE. Reason:
+<pre>    Bad Request</pre></p><hr><i><small>Powered by Jetty://</small></i><hr/>
+
+</body>
+</html>
+
+URL Accesed: http://ec2-54-210-13-60.compute-1.amazonaws.com/run/start/courseB/TUCE
+Status Code:
+400
+Headers:
+{'content-length': '310', 'server': 'Jetty(9.2.11.v20150529)', 'content-type': 'text/html; charset=ISO-8859-1', 'cache-control': 'must-revalidate,no-cache,no-store'}
+Text content:
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>Error 400 Bad Request</title>
+</head>
+<body><h2>HTTP ERROR 400</h2>
+<p>Problem accessing /run/start/courseB/TUCE. Reason:
+<pre>    Bad Request</pre></p><hr><i><small>Powered by Jetty://</small></i><hr/>
+
+</body>
+</html>
+
