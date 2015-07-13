@@ -46,7 +46,7 @@ For more information on the image pipeline, check out these docs: <br>
 # ASM
 In order to run the barebones code, the two task management functions must be run.
 These functions are located in the asm folder, and called
-task_asm.py and task_checker.py. <br>
+task_asm.py and task_checker.py. <br><br>
 The task_asm.py (hereafter referred to as 'task asm') file maintains a 
 queue of the tasks to be completed, and publishes them on the ROS 
 message, 'CurrentTask'. It also subscribes to the ROS 'Complete' message,
@@ -70,11 +70,11 @@ read the source code located in the asm directory.
 # Networking
 <br>
 # Development
-
-Required Tools:<br>
-Python
-ROS
-mitmproxy
+<br>
+#Required Tools:<br>
+* Python
+* ROS
+* mitmproxy
 
 
 

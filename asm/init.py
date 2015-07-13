@@ -1,5 +1,6 @@
 '''
 Program created to test API usage in roboboat competition
+Runs on the test server specified by felix on the roboboat google+
 Made by Zack Smith 7-03-15
 '''
 # Libraries for making and formatting HTML requests

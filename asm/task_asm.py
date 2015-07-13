@@ -37,13 +37,14 @@ def take_img():
 
 def Complete_Callback(data,task_array):
     '''
-    Function to deal with a completed task (activates when ROS msg 'Complete' changes)
+    Function to deal with a completed task
     '''
     global old_complete
     global task_index
     # If the complete signal hasn't changed, then don't change task
     if old_complete == data.complete:
         task_index = task_index
+    # Else, task is complete and should be updated
     else:
         # If complete is true, change the task 
         if (data.complete):
@@ -83,12 +84,13 @@ def task_selector():
     rate = rospy.Rate(10)
     curr_task=CurrentTask()
     while not rospy.is_shutdown():
-        # Get current task
+        # Get current task from the array
         curr_task.currentTask = task_array[task_index]
         # Publish current task
         pub.publish(curr_task)
         # Listen for the break signal
         rospy.Subscriber("Complete", Complete, Complete_Callback, task_array)
+        # Sleep
         rate.sleep()
 
 if __name__ == '__main__':
