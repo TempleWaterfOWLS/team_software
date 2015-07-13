@@ -12,13 +12,13 @@ The imaging pipeline has been installed in the catkin_ws of roboboat's
 current main processor, the HP Pavillion.
 The purpose of this pipeline is to use the 
 Bumblebee2 camera to generate pointcloud information.
-To run this pipeline, you should type the 
+To run this pipeline, you should type the following commands:
 ```
 roslaunch camera1394stereo stereo_camera.launch
 ```
 In a new shell, type:
 ```
-ROS_NAMESPACE=stereo_camera rosrun stereo_iamge_proc stereo_image_proc  
+ROS_NAMESPACE=stereo_camera rosrun stereo_image_proc stereo_image_proc  
 ```
 
 This will run the driver for the bumblebee2 camera and begin stereo processing on 
@@ -49,6 +49,6 @@ mitmproxy
 
 
 
-Todo:
-*Look in to running stereo_proc as a nodelet, or avoiding the launch from starting a roscore
-*Implement python-pcl downsampling of pointcloud
+#Todo: <br>
+* Look in to running stereo_proc as a nodelet, or avoiding the launch from starting a roscore
+* Implement python-pcl downsampling of pointcloud
