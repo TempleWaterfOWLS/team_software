@@ -68,10 +68,11 @@ def task_selector():
     t.setDaemon(True)
     t.start()
     ### Frame Capture
+    '''
     d = threading.Thread(target=take_img)
     d.setDaemon(True)
     d.start()
-
+    '''
     ### Process Management Section ###
 
     # Current Task Storage
